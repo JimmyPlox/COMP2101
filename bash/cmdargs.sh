@@ -6,6 +6,7 @@ echo "Performing command processing:
 myargs=()
 debug="no"
 verbose="no"
+
 # loop through the command line arguments
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -15,6 +16,13 @@ while [ $# -gt 0 ]; do
       ;;
     -d )
       debug="yes"
+        if [[ $# -gt 1 ]]; then
+          debugnum=$2
+        fi
+        if [[ $debugnum -gt 10 ]]; then
+          echo "Can not use more than a single digit"
+          exit
+        fi
       ;;
     -v )
       verbose="yes"
@@ -57,6 +65,7 @@ echo "Done, all arguments processed."
 
 if [ "$debug" = "yes" ]; then
   echo "Debug is on"
+  echo "Debug number is set to $debugnum"
 fi
 if [ "$verbose" = "yes" ]; then
   echo "Verbose is on"
