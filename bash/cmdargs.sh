@@ -61,4 +61,4 @@ fi
 if [ "$verbose" = "yes" ]; then
   echo "Verbose is on"
 fi
-echo ${myargs[@]}
+echo "These are the commands you entered: " "${myargs[@]}"
